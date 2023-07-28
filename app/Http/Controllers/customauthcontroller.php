@@ -25,7 +25,7 @@ class CustomAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if(auth::attempt($credentials)) {
-            return redirect()->intended('deshboard')
+            return redirect()->intended('dashboard')
             ->withSuccess('Bienvenido');
         }
 
@@ -65,13 +65,13 @@ class CustomAuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('deshboard');
+            return view('dashboard');
         }
 
         return redirect('login')->withSuccess('No tienes  acceso a esta seccion');
     }
 
-    public function signDut() {
+    public function signOut() {
         Session::flush();
         Auth::logout();
 

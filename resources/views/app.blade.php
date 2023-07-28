@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{  str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="csrf-token" content="{{ csrf_token () }}">
+    <meta name="csrf-token" content="{{ csrf_token () }}">
 
-  <title>{{ config('app.name', 'Laravel')}}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-
-  <link rel="dns-prefetcgh" href="//fonts.bunny.net">
-  <link rel="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+                {{ config('app.name', 'Laravel') }}
             </a>
             <button
-                class="navbar-toggler"
+                class="navbar-toggle"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
-                aria-controls="navbar<supportedContent"
+                aria-controls="navbarSupportedContent"
                 aria-expanded="false"
-                aria-label="{{ ('Toggle navigation') }}">
+                aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,9 +36,9 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     @guest
-                        @if(Route::hass('login'))
+                        @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('login')}}">{{ __('login')}}</a>
+                                <a class="nav-link" href="{{route('login')}}">{{ __('Login')}}</a>
                             </li>
                         @endif
                         @if(Route::has('register-user'))
@@ -49,14 +47,14 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown"...>
                     @endguest
                 </ul>
             </div>
         </div>
     </nav>
     <main class="py-4">
-        @yield(content)
+        @yield('content')
     </main>
 </div>
 
